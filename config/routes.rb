@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
     resource :session, only: [:new, :create, :destroy]
+    resources :products, except: %i[show]
+
   end
 
-  resources :products, only: %i[index]
+  root 'admin/products#index'
 
-  root 'products#index'
 end

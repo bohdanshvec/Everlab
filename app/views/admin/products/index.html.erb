@@ -2,6 +2,10 @@
 
 <h1>Products</h1>
 
+<% if admin_signed_in? %>
+  <%= current_admin.email %><br>
+<% end %>
+
 <ul>
   <% @products.each do |product| %>
     <li>
