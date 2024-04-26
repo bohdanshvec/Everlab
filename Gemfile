@@ -64,6 +64,11 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+
+  gem 'faker', '~> 3.3', '>= 3.3.1'
+
+  gem 'byebug', '~> 11.1', '>= 11.1.3'
+
 end
 
 group :test do
