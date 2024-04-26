@@ -1,0 +1,18 @@
+<%= provide :main_menu do %>
+
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><%= link_to 'Home', root_path, class: 'me-4 nav-link px-2 text-white' %></li>
+        </ul>
+
+        <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
+          <li><%= link_to 'Log In', new_admin_session_path, class: 'me-4 nav-link px-2 text-white' %></li>
+          <li><%= link_to t('menu.log_out'), admin_session_path, class:'me-4 nav-link px-2 text-white', data: {turbo_method: :delete} %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<% end %>
