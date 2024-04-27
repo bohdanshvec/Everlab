@@ -1,0 +1,41 @@
+<%= form_with(url: admin_products_path, method: 'get') do |f| %>
+
+  <div class="row">
+    <div class="col-md-7">
+      <div class='row mb-3'>
+        <div class='offset-sm-2 col-sm-10'>
+      
+          <div>
+            Sort by Created At----
+            <%= f.radio_button :sort_by_created_at, 'created_at: :asc' %>
+            <%= f.label :asc, 'ASC' %>
+            <%= f.radio_button :sort_by_created_at, 'created_at: :desc' %>
+            <%= f.label :desc, 'DESC' %>
+          </div>
+
+          <div>
+            Sort by Updated At----
+            <%= f.radio_button :sort_by_updated_at, 'updated_at: :asc' %>
+            <%= f.label :asc, 'ASC' %>
+            <%= f.radio_button :sort_by_updated_at, 'updated_at: :desc' %>
+            <%= f.label :desc, 'DESC' %>
+          </div>
+
+          <div>
+            First or Last----
+            <%= f.radio_button :first_last, '.first(5)' %>
+            <%= f.label :asc, 'First 5' %>
+            <%= f.radio_button :first_last, '.last(5)' %>
+            <%= f.label :desc, 'Last 5' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-5 d-flex align-items-center">
+      <div>
+        <%= f.submit 'Sort', class: "btn btn-primary"  %>
+      </div>
+    </div>
+  </div>
+<% end %>
