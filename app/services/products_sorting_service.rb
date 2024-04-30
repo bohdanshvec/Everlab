@@ -6,6 +6,10 @@ class ProductsSortingService
   def sort_products
     str = 'Product'
 
+    if @params[:query].present?
+      str = 'Product.where("title ILIKE :query OR body ILIKE :query", query: "%#{@params[:query]}%")'
+    end
+
     if @params[:first_last].present?
       str = str + "#{@params[:first_last]}"
     elsif @params[:sort_by_created_at].present? || @params[:sort_by_updated_at].present?

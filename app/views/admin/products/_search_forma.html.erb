@@ -1,0 +1,16 @@
+<%= form_with(url: admin_products_path, method: 'get') do |f| %>
+  
+  <div class='row'>
+    <div class="col-sm-1 col-form-label">
+      <%= f.label :query, "Search:" %>
+    </div>
+    <div class="col-sm-11 mb-2">
+      <%= f.text_field :query, placeholder: "Enter keyword", class: 'form-control form-control-lg' %>
+    </div>
+  </div>
+
+    <div class="mb-2">
+      <%= f.submit "Search", class: "btn btn-primary mr-2" %>
+    </div>
+
+<% end %>

@@ -3,6 +3,7 @@ class Admin::ProductsController < ApplicationController
   before_action :set_product!, only: %i[edit update destroy]
 
   def index
+    # byebug
     @products = ProductsSortingService.new(params).sort_products
   end
 
