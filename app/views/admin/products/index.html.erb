@@ -1,14 +1,10 @@
 <% currently_at %>
 
-<%= render 'sort_forma' %>
+<%= render 'sort_form' %>
 
-<%= render 'search_forma' %>
+<%= render 'search_form' %>
 
-<h1>Products</h1>
-
-<% if admin_signed_in? %>
-  <%= current_admin.email %><br>
-<% end %>
+<h1>Products :</h1>
 
 <ul>
   <%= render @products %>

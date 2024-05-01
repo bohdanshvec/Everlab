@@ -3,7 +3,6 @@ class Admin::ProductsController < ApplicationController
   before_action :set_product!, only: %i[edit update destroy]
 
   def index
-    # byebug
     @products = ProductsSortingService.new(params).sort_products
   end
 
@@ -35,7 +34,8 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    @product.delete
+    # @product.comments.destroy_all
+    @product.destroy
     flash[:success] = "Product deleted"
     redirect_to root_path, status: :see_other
   end
