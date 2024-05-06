@@ -1,28 +1,20 @@
 class ProductsSortingService
-  def initialize(params)
+  def initialize(params, products = Product.all)
     @params = params
+    @products = products
   end
 
   def sort_products
-    str = 'Product'
 
     if @params[:query].present?
-      str = 'Product.where("title ILIKE :query OR body ILIKE :query", query: "%#{@params[:query]}%")'
+      @products = @products.where("title ILIKE :query OR body ILIKE :query", query: "%#{@params[:query]}%")
+    elsif @params[:first_last].present?
+      @params[:first_last] == "first" ? @products = @products.first(2) : @products = @products.last(2)
+    elsif @params[:sort_by_created_at].present?
+      @params[:sort_by_created_at] == 'asc' ? @products = @products.order(created_at: :asc) : @products = @products.order(created_at: :desc)
+    elsif @params[:sort_by_created_at].present?
+      @params[:sort_by_updated_at] == 'asc' ? @products = @products.order(updated_at: :asc) : @products = @products.order(updated_at: :desc)
     end
-
-    if @params[:first_last].present?
-      str = str + "#{@params[:first_last]}"
-    elsif @params[:sort_by_created_at].present? || @params[:sort_by_updated_at].present?
-      str = str + ".order(#{@params[:sort_by_created_at] || @params[:sort_by_updated_at]})"
-    elsif @params[:first_last].present? && (@params[:sort_by_created_at].present? || @params[:sort_by_updated_at].present? )
-      str = str + ".order(#{@params[:sort_by_created_at] || @params[:sort_by_updated_at]})#{@params[:first_last]}"
-    elsif @params[:sort_by_created_at].present? && @params[:sort_by_updated_at].present? && @params[:first_last]
-      str = str + ".order(#{@params[:sort_by_created_at]}, #{@params[:sort_by_updated_at]})#{@params[:first_last]}"
-    else
-      str = str + ".all"
-    end
-
-    products = eval(str)
-    products
+    
   end
 end

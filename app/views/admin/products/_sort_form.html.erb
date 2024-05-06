@@ -1,41 +1,53 @@
 <%= form_with(url: admin_products_path, method: 'get') do |f| %>
-
-  <div class="row">
-    <div class="col-md-7">
-      <div class='row mb-3'>
-        <div class='offset-sm-2 col-sm-10'>
-      
-          <div>
-            Sort by Created At----
-            <%= f.radio_button :sort_by_created_at, 'created_at: :asc' %>
-            <%= f.label :asc, 'ASC' %>
-            <%= f.radio_button :sort_by_created_at, 'created_at: :desc' %>
-            <%= f.label :desc, 'DESC' %>
-          </div>
-
-          <div>
-            Sort by Updated At----
-            <%= f.radio_button :sort_by_updated_at, 'updated_at: :asc' %>
-            <%= f.label :asc, 'ASC' %>
-            <%= f.radio_button :sort_by_updated_at, 'updated_at: :desc' %>
-            <%= f.label :desc, 'DESC' %>
-          </div>
-
-          <div>
-            First or Last----
-            <%= f.radio_button :first_last, '.first(5)' %>
-            <%= f.label :asc, 'First 5' %>
-            <%= f.radio_button :first_last, '.last(5)' %>
-            <%= f.label :desc, 'Last 5' %>
-          </div>
+  <div class='card p-2'>
+    <div class='ms-4'>
+      <div class='row'>
+        <div class="col-sm-3 col-form-label">
+          <%= f.label :query, "Search" %>
+        </div>
+        <div class="col-sm-9 mb-2">
+          <%= f.text_field :query, placeholder: "Enter keyword", class: 'form-control form-control-lg' %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-sm-3 col-form-label">
+          Sort by Created At
+        </div>
+        <div class="col-sm-9 mb-2">
+          <%= f.radio_button :sort_by_created_at, 'asc' %>
+          <%= f.label :asc, 'ASC' %>
+          <%= f.radio_button :sort_by_created_at, 'desc' %>
+          <%= f.label :desc, 'DESC' %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-sm-3 col-form-label">
+          Sort by Updated At
+        </div>
+        <div class="col-sm-9 mb-2">
+          <%= f.radio_button :sort_by_updated_at, 'asc' %>
+          <%= f.label :asc, 'ASC' %>
+          <%= f.radio_button :sort_by_updated_at, 'desc' %>
+          <%= f.label :desc, 'DESC' %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-sm-3 col-form-label">
+          First or Last
+        </div>
+        <div class="col-sm-9 mb-2">
+          <%= f.radio_button :first_last, 'first' %>
+          <%= f.label :asc, 'First 5' %>
+          <%= f.radio_button :first_last, 'last' %>
+          <%= f.label :desc, 'Last 5' %>
         </div>
       </div>
     </div>
-    
-    <div class="col-md-5 d-flex align-items-center">
-      <div>
-        <%= f.submit 'Sort', class: "btn btn-primary" %>
-      </div>
+
+    <div class='my-2'>
+      <%= f.submit 'Sort, search', class: "btn btn-primary me-4" %>
+      <%= link_to 'All products', admin_products_path, class: "btn btn-primary" %>
     </div>
   </div>
+ 
 <% end %>
