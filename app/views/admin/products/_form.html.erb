@@ -1,4 +1,5 @@
-<%= render 'shared/errors', object: @product %>
+<%= tag.div id: dom_id(@product) do %>
+  <%= render 'shared/errors', object: @product %>
 
   <%= form_with(model: [:admin, @product]) do |f| %>
 
@@ -41,3 +42,4 @@
     </div>
 
   <% end %>
+<% end %>

@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+  include ActionView::RecordIdentifier
+
   before_action :require_authentication, only: %i[new create edit update destroy]
   before_action :set_product!, only: %i[edit update destroy]
 
@@ -35,7 +37,7 @@ class Admin::ProductsController < ApplicationController
   def update
     if @product.update(product_params)
       flash[:success] = "You updated product"
-      redirect_to admin_products_path(anchor: @product.id)
+      redirect_to admin_products_path(anchor: dom_id(@product))
     else
       render :edit, status: :unprocessable_entity
     end
