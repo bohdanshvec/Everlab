@@ -1,6 +1,7 @@
-<%= render 'shared/errors', object: comment %>
 
-<%= form_with(model: [:admin, product, comment]) do |f| %>
+<%= form_with(model: [:admin, product, @comment]) do |f| %>
+<%= render 'shared/errors', object: @comment %>
+
 
   <div class='row mb-2 mt-3'>
     <div class='col-sm-1 col-form-label'>
@@ -16,7 +17,7 @@
     <div class="col-sm-1 col-form-label">
     </div>
     <div class="col-sm-11 my-2">
-      <%= f.submit 'Create comment', class: 'btn btn-primary' %>
+      <%= f.submit 'Create comment', class: 'btn btn-primary', data: { turbo: false } %>
     </div>
   </div>
 <% end %>

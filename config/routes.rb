@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resource :session, only: [:new, :create, :destroy]
-    resources :products, except: %i[show] do
+    resources :products do
       resources :comments, only: %i[create]
     end
 

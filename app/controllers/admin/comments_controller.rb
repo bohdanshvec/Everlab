@@ -8,8 +8,9 @@ class Admin::CommentsController < ApplicationController
       flash[:success] = 'You created comment for product'
       redirect_to root_path
     else
-      flash[:warning] = 'Comment not created'
-      redirect_to root_path
+      # flash[:warning] = 'Comment not created'
+      # flash.now[:warning] = 'Comment not created due to validation errors.'
+      render 'admin/products/show', status: :unprocessable_entity
     end
   end
 

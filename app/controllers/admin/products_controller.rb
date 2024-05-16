@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
   before_action :require_authentication, only: %i[new create edit update destroy]
-  before_action :set_product!, only: %i[edit update destroy]
+  before_action :set_product!, only: %i[edit update show destroy]
 
   def index
     if params.except(:controller, :action).present? && Product.reprocessing_request == nil
@@ -12,6 +12,7 @@ class Admin::ProductsController < ApplicationController
       @products = Product.all
       Product.reprocessing_request = nil
     end
+    @comment = Comment.new
   end
 
   def new
@@ -27,6 +28,10 @@ class Admin::ProductsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @comment = @product.comments.build
   end
 
   def edit

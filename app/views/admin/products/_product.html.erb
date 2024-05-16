@@ -1,7 +1,7 @@
-<div class='card p-2 my-2' id="<%= product.id %>">
+<div class='card p-2 my-2' id="<%= product.id %>" >
   <div class='mt-2'>
     <li>
-      <%= product.position %> <%= product.title %>
+      <%= product.position %> <%= link_to product.title, admin_product_path(product) %>
     </li>
       <%= product.body %>
       
@@ -34,6 +34,6 @@
     <% end %>
   </div>
 
-  <%= render 'admin/comments/form', product: product, comment: product.comments.build %>
+  <%= render 'admin/comments/form', product: product %>
 
 </div>
