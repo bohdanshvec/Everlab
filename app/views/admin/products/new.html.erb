@@ -1,5 +1,6 @@
 <% currently_at %>
 
 <h1 class="bm-4">New product</h1>
-
+<%= turbo_frame_tag @product do %>
 <%= render 'form' %> 
+<% end %>

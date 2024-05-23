@@ -1,5 +1,5 @@
-<div class='card p-2 my-2' id="<%= product.id %>">
-  <div class='mt-2'>
+<%= tag.div class: 'card p-2 my-2', id: dom_id(product) do %>
+  <div class='my-3'>
     <li>
       <%= product.position %> <%= product.title %>
     </li>
@@ -22,11 +22,9 @@
           </h2>
           <div id="collapse_<%= product.id%>" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <ul>
-                <% product.comments.each do |comment| %>
-                  <li><%= comment.body %></li>
-                <% end %>
-              </ul>
+            <%= turbo_frame_tag "comments" do %>
+                  <%= render product.comments %>
+            <% end %>
             </div>
           </div>
         </div>
@@ -34,6 +32,21 @@
     <% end %>
   </div>
 
-  <%= render 'admin/comments/form', product: product, comment: product.comments.build %>
-
-</div>
+  <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_<%= product.id%>" aria-expanded="true" aria-controls="collapse_<%= product.id%>">
+              Create comment
+            </button>
+          </h2>
+          <div id="collapse_<%= product.id%>" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+            <%= turbo_frame_tag 'new_comment' do %>
+              <%= render 'admin/comments/form', product: product %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+<% end %>

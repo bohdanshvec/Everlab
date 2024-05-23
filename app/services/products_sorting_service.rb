@@ -12,7 +12,7 @@ class ProductsSortingService
       @params[:first_last] == "first" ? @products = @products.first(2) : @products = @products.last(2)
     elsif @params[:sort_by_created_at].present?
       @params[:sort_by_created_at] == 'asc' ? @products = @products.order(created_at: :asc) : @products = @products.order(created_at: :desc)
-    elsif @params[:sort_by_created_at].present?
+    elsif @params[:sort_by_updated_at].present?
       @params[:sort_by_updated_at] == 'asc' ? @products = @products.order(updated_at: :asc) : @products = @products.order(updated_at: :desc)
     end
     

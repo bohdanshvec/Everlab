@@ -1,6 +1,7 @@
-<%= render 'shared/errors', object: comment %>
+<%= turbo_frame_tag 'new_comment' do %>
 
-<%= form_with(model: [:admin, product, comment]) do |f| %>
+<%= form_with(model: [:admin, (defined?(product) ? product : @product), @comment]) do |f| %>
+<%= render 'shared/errors', object: @comment %>
 
   <div class='row mb-2 mt-3'>
     <div class='col-sm-1 col-form-label'>
@@ -20,3 +21,5 @@
     </div>
   </div>
 <% end %>
+<% end %>
+
