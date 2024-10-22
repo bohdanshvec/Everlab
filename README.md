@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+на ветке search_with_turbo была идея реализовать замену только содержимого фрейма products. Который должен был обновляться сразуже после установки галочки. 
+https://code.avi.nyc/turbo-frame-search-filters
+Для этого добавлен контроллер стимулус и data: {action: "change->filter#submit"} в поля формы поиска.
+И кончно же форма подключена к контроллеру стимулус: data: {controller: "filter"}
