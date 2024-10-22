@@ -8,5 +8,5 @@ class Product < ApplicationRecord
   validates :body, presence: true, length: { minimum: 2 }
   validates :position, presence: true
 
-  scope :ordered, -> { order(updated_at: :desc) }
+  scope :ordered, -> { order(id: :asc) }
 end
